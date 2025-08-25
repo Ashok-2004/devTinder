@@ -22,10 +22,10 @@ app.use('/',userRouter)
 
 connectDB()
 .then(()=>{
-    console.log("Database connected successfully")
-    app.listen(3000,()=>{
-    console.log("server running on port 7777")
-}); 
+    const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server running on port ${PORT}`);
+});
 })
 .catch((err)=>{
     console.error("database not connected")
