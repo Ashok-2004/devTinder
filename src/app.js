@@ -4,9 +4,9 @@ const app=express();
 const cookieParser=require("cookie-parser")
 const cors=require('cors')
 app.use(cors({
-    origin:"http://localhost:5173",
-    credentials:true,
-}))
+    origin: "https://buggylove.netlify.app",
+    credentials: true
+}));
 app.use(cookieParser())
 app.use(express.json());
 const authRouter=require('./routes/auth')
@@ -22,9 +22,9 @@ app.use('/',userRouter)
 connectDB()
 .then(()=>{
     console.log("Database connected successfully")
-    app.listen(3000,()=>{
-    console.log("server running on port 7777")
-}); 
+    const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+ 
 })
 .catch((err)=>{
     console.error("database not connected")
